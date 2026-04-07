@@ -13,15 +13,15 @@ use zygisk_api::api::v4::ZygiskOption;
 
 pub mod config;
 use config::{
-    HMSPUSH_PACKAGE_NAME, SPOOF_BUILD_PROPERTIES, SPOOF_HMSPUSH_PROPERTIES, SPOOF_SYSTEM_PROPERTIES,
+    HMSPUSH_PACKAGE_NAME, SPOOF_BUILD_PROPERTIES, SPOOF_MIPUSH_PROPERTIES, SPOOF_SYSTEM_PROPERTIES,
 };
 mod hook;
 mod server;
 
 #[derive(Default)]
-struct HmsPushModule;
+struct MiPushModule;
 
-impl ZygiskModule for HmsPushModule {
+impl ZygiskModule for MiPushModule {
     type Api = V4;
 
     fn pre_app_specialize<'a>(
@@ -33,7 +33,7 @@ impl ZygiskModule for HmsPushModule {
         android_logger::init_once(
             Config::default()
                 .with_max_level(LevelFilter::Debug)
-                .with_tag("HmsPushZygisk"),
+                .with_tag("MiPushZygisk"),
         );
 
         // args.nice_name and args.app_data_dir are &JString<'a>
@@ -88,12 +88,12 @@ fn pre_specialize(
     package_name: &str,
     process: &str,
 ) {
-    if package_name == HMSPUSH_PACKAGE_NAME {
+    if package_name == MIPUSH_PACKAGE_NAME {
         info!(
-            "hmspush package detected [{}]: inject spoofed properties",
+            "mipush package detected [{}]: inject spoofed properties",
             package_name
         );
-        hook::hook_system_properties(&mut api, env, SPOOF_HMSPUSH_PROPERTIES);
+        hook::hook_system_properties(&mut api, env, SPOOF_MIPUSH_PROPERTIES);
         return;
     }
 
