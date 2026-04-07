@@ -146,5 +146,5 @@ fn send_query(stream: &mut UnixStream, package_name: &str, process_name: &str) -
     }
 }
 
-register_module!(HmsPushModule);
+register_module!(MiPushModule);
 register_companion!(server::companion_handler);
