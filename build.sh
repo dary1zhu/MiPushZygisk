@@ -37,7 +37,7 @@ build_target() {
     cargo build --release --target "$target"
 
     mkdir -p "$PROJECT_ROOT/magisk/zygisk"
-    cp "target/$target/release/libhmspush.so" "$PROJECT_ROOT/magisk/zygisk/$abi.so"
+    cp "target/$target/release/libmipush.so" "$PROJECT_ROOT/magisk/zygisk/$abi.so"
     echo "  -> Copied $abi.so"
 }
 
@@ -81,8 +81,8 @@ sed -e "s/^version=.*/version=$VERSION/" \
 rm -rf "$PROJECT_ROOT/build"
 mkdir -p "$PROJECT_ROOT/build"
 
-zip -r9 "$PROJECT_ROOT/build/hmspush-zygisk-${VERSION}.zip" .
+zip -r9 "$PROJECT_ROOT/build/mipush-zygisk-${VERSION}.zip" .
 
 popd
 
-echo "==> Done! Output: $PROJECT_ROOT/build/hmspush-zygisk-${VERSION}.zip"
+echo "==> Done! Output: $PROJECT_ROOT/build/mipush-zygisk-${VERSION}.zip"
