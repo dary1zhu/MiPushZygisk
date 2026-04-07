@@ -8,7 +8,7 @@ export interface AppInfo {
   processes: string[]; // From config file `pkg|process`
 }
 
-const CONFIG_PATH = "/data/adb/hmspush/app.conf";
+const CONFIG_PATH = "/data/adb/mipush/app.conf";
 
 export type ConfigMap = Map<string, string[]>;
 
@@ -81,14 +81,14 @@ export async function getAppsData(): Promise<AppInfo[]> {
 
   try {
     // Query receivers
-    const receiversRes = await ksu.exec('cmd package query-receivers --components -a com.huawei.android.push.intent.REGISTRATION');
+    const receiversRes = await ksu.exec('cmd package query-receivers --components -a com.xiaomi.mipush.RECEIVE_MESSAGE');
     if (receiversRes.errno === 0) {
       const pkgs = extractPackagesFromCmd(receiversRes.stdout);
       pkgs.forEach(p => foundPackages.add(p));
     }
 
     // Query services
-    const servicesRes = await ksu.exec('cmd package query-services --components -a com.huawei.push.msg.NOTIFY_MSG');
+    const servicesRes = await ksu.exec('cmd package query-services --components -a com.xiaomi.mipush.MESSAGE_ARRIVED');
     if (servicesRes.errno === 0) {
       const pkgs = extractPackagesFromCmd(servicesRes.stdout);
       pkgs.forEach(p => foundPackages.add(p));
