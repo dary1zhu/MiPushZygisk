@@ -1,6 +1,6 @@
-id=zygisk_hmspush
-name=Zygisk - HMSPush
-version=v0.4(40)
+id=zygisk_mipush
+name=Zygisk - MiPush
+version=v0.5(40)
 versionCode=40
-author=Yufz
-description=为应用伪装华为设备，以便使用 HMSPush
+author=fei-ke, notXX, Dog_EZ, Daryl
+description=为应用伪装小米设备，以便使用 MiPush
