@@ -16,7 +16,7 @@ pub fn companion_handler(stream: &mut UnixStream) {
         android_logger::init_once(
             Config::default()
                 .with_max_level(LevelFilter::Debug)
-                .with_tag("MiPushZygiskServer"),
+                .with_tag("HmsPushZygiskServer"),
         );
     });
 
