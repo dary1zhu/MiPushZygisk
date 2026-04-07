@@ -1,10 +1,10 @@
 [package]
-name = "hmspush"
+name = "mipush-zygisk"
 version = "0.1.0"
 edition = "2021"
 
 [lib]
-name = "hmspush"
+name = "mipush"
 crate-type = ["cdylib"]
 
 [dependencies]
