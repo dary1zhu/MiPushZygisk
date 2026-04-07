@@ -1,5 +1,5 @@
-id=zygisk_mipush
-name=Zygisk - MiPush
+id=mipush_zygisk
+name=MiPush Zygisk Module
 version=v0.5(40)
 versionCode=40
 author=fei-ke, notXX, Dog_EZ, Daryl
